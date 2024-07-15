@@ -862,7 +862,7 @@ class Worker:
         await self.pool.delete(self.health_check_key)
         if self.on_shutdown:
             await self.on_shutdown(self.ctx)
-        await self.pool.close(close_connection_pool=True)
+        await self.pool.aclose(close_connection_pool=True)
         self._pool = None
 
     def __repr__(self) -> str:
